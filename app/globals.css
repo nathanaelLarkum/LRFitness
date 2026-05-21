@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Light Mode Brand Scale */
+  --color-C1: #eff6ff;
+  --color-C2: #dbeafe;
+  --color-C3: #93c5fd;
+  --color-C4: #60a5fa;
+  --color-C5: #3b82f6;
+  --color-C6: #7e22ce;
+  --color-CH1: #e0e7ff;
+  --color-CH2: #bfdbfe;
+  --color-CH3: #2563eb;
+  --color-CH4: #6b21a8;
+
+  /* Dark Mode Brand Scale */
+  --color-D1: #312e81;
+  --color-D2: #3730a3;
+  --color-D3: #4338ca;
+  --color-D4: #4f46e5;
+  --color-D5: #1e1b4b;
+  --color-D6: #0f172a;
+  --color-DH1: #4c1d95;
+  --color-DH2: #5b21b6;
+  --color-DH3: #3730a3;
+  --color-DH4: #1e293b;
+
+  /* Spacing */
+  --spacing-section-y: 5rem;
+  --spacing-section-x: 1.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
+/* Base style overrides strictly using tokens */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-C1);
+  color: var(--color-D6);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-D6);
+    color: var(--color-C1);
+  }
+}
+
+/* Custom layout utility */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, var(--color-C5), var(--color-C6));
+}
+
+@media (prefers-color-scheme: dark) {
+  .text-gradient {
+    background-image: linear-gradient(to right, var(--color-C4), var(--color-C3));
+  }
 }
